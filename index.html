@@ -31,6 +31,27 @@ h1{font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-.03em;line-hei
 .s1 .badge,.s1 .btn.main{background:#2563eb}.s1 li::before{color:#2563eb}
 .s2 .badge,.s2 .btn.main{background:#2B3BFF}.s2 li::before{color:#2B3BFF}
 .s3 .badge,.s3 .btn.main{background:#F26A1B}.s3 li::before{color:#F26A1B}
+/* 참고 원본 미리보기 */
+.preview{margin-top:56px}
+.preview h2{font-size:clamp(22px,2.6vw,30px);font-weight:900;letter-spacing:-.02em}
+.preview .sub{color:#475569;margin-top:6px;font-size:15.5px}
+.pv-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.pv-tab{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:999px;border:1px solid #cbd5e1;background:#fff;font:inherit;font-size:14.5px;font-weight:800;color:#334155;cursor:pointer;transition:.15s}
+.pv-tab i{font-style:normal;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#e2e8f0;font-size:12.5px}
+.pv-tab:hover{border-color:#0f172a}
+.pv-tab.on{background:#0f172a;border-color:#0f172a;color:#fff}
+.pv-tab.on i{background:var(--pc,#2563eb);color:#fff}
+.pv-frame{margin-top:16px;border-radius:14px;overflow:hidden;border:1px solid #cbd5e1;background:#e9edf3;box-shadow:0 24px 50px rgba(15,23,42,.14)}
+.pv-bar{height:38px;display:flex;align-items:center;gap:7px;padding:0 14px}
+.pv-bar b{width:11px;height:11px;border-radius:50%}
+.pv-bar b:nth-child(1){background:#ff5f57}.pv-bar b:nth-child(2){background:#febc2e}.pv-bar b:nth-child(3){background:#28c840}
+.pv-url{flex:1;margin-left:10px;font-size:12.5px;color:#64748b;background:#fff;border-radius:999px;padding:3px 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pv-open{font-size:12.5px;font-weight:800;color:#0f172a;white-space:nowrap}
+.pv-open:hover{text-decoration:underline}
+.pv-screen{position:relative;aspect-ratio:16/10;background:#fff;overflow:hidden}
+.pv-screen iframe{position:absolute;left:0;top:0;width:1440px;height:900px;border:0;transform-origin:0 0;display:none}
+.pv-screen iframe.on{display:block}
+.pv-note{font-size:13.5px;color:#64748b;margin-top:10px}
 .tip{margin-top:40px;background:#fff;border:1px solid #e2e8f0;border-left:5px solid #0f172a;border-radius:0 14px 14px 0;padding:18px 22px;font-size:15px;color:#334155}
 .tip b{color:#0f172a}
 @media (max-width:960px){.grid{grid-template-columns:1fr}}
@@ -73,7 +94,42 @@ h1{font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-.03em;line-hei
     </article>
   </div>
 
+  <section class="preview" id="preview">
+    <h2>참고 원본 미리보기</h2>
+    <p class="sub">세 예시가 참고한 실제 포트폴리오입니다. 번호를 눌러 바꿔 보고, 화면 안에서 스크롤·클릭도 해 보세요.</p>
+    <div class="pv-tabs">
+      <button class="pv-tab on" data-i="0" style="--pc:#2563eb"><i>1</i>사이드바 원페이지형</button>
+      <button class="pv-tab" data-i="1" style="--pc:#2B3BFF"><i>2</i>발표형 슬라이드</button>
+      <button class="pv-tab" data-i="2" style="--pc:#F26A1B"><i>3</i>카테고리 표지형</button>
+    </div>
+    <div class="pv-frame">
+      <div class="pv-bar"><b></b><b></b><b></b><span class="pv-url" id="pvUrl">goalbangg-prog.github.io/Portfoilo/</span><a class="pv-open" id="pvOpen" href="https://goalbangg-prog.github.io/Portfoilo/" target="_blank" rel="noopener">새 창으로 열기 ↗</a></div>
+      <div class="pv-screen" id="pvScreen">
+        <iframe class="on" title="참고 원본 1" src="https://goalbangg-prog.github.io/Portfoilo/" loading="lazy"></iframe>
+        <iframe title="참고 원본 2" data-src="https://sh11025.github.io/"></iframe>
+        <iframe title="참고 원본 3" data-src="https://su4228-prog.github.io/seoyeonKo_portfolio/"></iframe>
+      </div>
+    </div>
+    <p class="pv-note">화면이 작게 보이면 '새 창으로 열기'로 실제 크기로 확인하세요.</p>
+  </section>
+
   <div class="tip"><b>내 포트폴리오로 바꾸는 법</b> — 원하는 스타일 폴더의 <b>index.html</b>을 복사해 이름·소개·프로젝트 글을 바꾸고, <b>assets/mock</b> 그림 자리에 내 화면 캡처를 넣으면 됩니다.</div>
 </div>
+<script>
+(function(){
+  const screen=document.getElementById('pvScreen'), frames=[...screen.querySelectorAll('iframe')], tabs=[...document.querySelectorAll('.pv-tab')];
+  const urls=['https://goalbangg-prog.github.io/Portfoilo/','https://sh11025.github.io/','https://su4228-prog.github.io/seoyeonKo_portfolio/'];
+  // 1440×900 화면을 칸 크기에 맞게 줄여서 보여 주기
+  function fit(){const s=screen.clientWidth/1440;frames.forEach(f=>f.style.transform='scale('+s+')')}
+  new ResizeObserver(fit).observe(screen); fit();
+  tabs.forEach(t=>t.addEventListener('click',()=>{
+    const i=+t.dataset.i;
+    tabs.forEach(b=>b.classList.toggle('on',b===t));
+    frames.forEach((f,j)=>{if(j===i&&!f.src&&f.dataset.src)f.src=f.dataset.src;f.classList.toggle('on',j===i)});
+    document.getElementById('pvUrl').textContent=urls[i].replace('https://','');
+    document.getElementById('pvOpen').href=urls[i];
+  }));
+})();
+</script>
 </body>
 </html>

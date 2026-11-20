@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Pretendard,Apple SD Gothic Neo,Malgun Gothic,sans-serif">
+<defs><pattern id="d" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#cbd5e1"/></pattern></defs>
+<rect width="800" height="500" fill="#f8fafc"/><rect width="800" height="500" fill="url(#d)"/>
+<rect width="800" height="48" fill="#fff"/><text x="24" y="30" fill="#0f172a" font-size="15" font-weight="800">뉴스 수집 자동화 워크플로</text>
+<rect x="640" y="12" width="136" height="26" rx="13" fill="#dcfce7"/><text x="660" y="30" fill="#15803d" font-size="12" font-weight="700">● 매일 08:00 실행</text>
+<g stroke="#94a3b8" stroke-width="2.5" fill="none"><path d="M164 250 H214"/><path d="M344 250 H394"/><path d="M524 250 C560 250 560 170 600 170"/><path d="M524 250 C560 250 560 330 600 330"/></g>
+<g font-size="13" font-weight="700">
+<rect x="44" y="200" width="120" height="100" rx="16" fill="#fff" stroke="#f97316" stroke-width="2"/><text x="90" y="244" font-size="26">⏰</text><text x="68" y="280" fill="#0f172a">스케줄</text>
+<rect x="214" y="200" width="130" height="100" rx="16" fill="#fff" stroke="#2563eb" stroke-width="2"/><text x="264" y="244" font-size="26">🌐</text><text x="236" y="280" fill="#0f172a">기사 크롤링</text>
+<rect x="394" y="200" width="130" height="100" rx="16" fill="#fff" stroke="#7c3aed" stroke-width="2"/><text x="444" y="244" font-size="26">🤖</text><text x="420" y="280" fill="#0f172a">AI 요약</text>
+<rect x="600" y="124" width="150" height="92" rx="16" fill="#fff" stroke="#16a34a" stroke-width="2"/><text x="660" y="164" font-size="24">📊</text><text x="630" y="198" fill="#0f172a">시트에 저장</text>
+<rect x="600" y="284" width="150" height="92" rx="16" fill="#fff" stroke="#e11d48" stroke-width="2"/><text x="660" y="324" font-size="24">💬</text><text x="630" y="358" fill="#0f172a">슬랙 알림</text>
+</g>
+<rect x="44" y="410" width="706" height="60" rx="12" fill="#fff" stroke="#e2e8f0"/>
+<text x="64" y="446" fill="#334155" font-size="13">최근 실행: 오늘 08:00 · 기사 48건 수집 · 요약 48건 · 성공 ✔</text>
+</svg>

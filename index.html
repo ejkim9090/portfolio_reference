@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>포트폴리오 스타일 참고 예시</title>
+<meta name="description" content="GitHub Pages 포트폴리오 스타일 예시 3가지">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Pretendard Variable",Pretendard,-apple-system,"Malgun Gothic",sans-serif;background:#f6f7fb;color:#0f172a;line-height:1.7;word-break:keep-all;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:64px 24px 80px}
+h1{font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-.03em;line-height:1.25}
+.lead{color:#475569;margin-top:12px;font-size:17px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 12px 32px -18px rgba(15,23,42,.25);transition:transform .2s}
+.card:hover{transform:translateY(-4px)}
+.thumb{aspect-ratio:16/10;position:relative;overflow:hidden;border-bottom:1px solid #e2e8f0}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.badge{position:absolute;left:14px;top:14px;font-size:12px;font-weight:800;color:#fff;padding:4px 12px;border-radius:999px}
+.bd{padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.bd h2{font-size:21px;font-weight:900;letter-spacing:-.02em}
+.bd p{font-size:14.5px;color:#475569}
+.bd ul{list-style:none;display:grid;gap:4px;font-size:14px;color:#334155}
+.bd li::before{content:"✓ ";font-weight:900}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:8px}
+.btn{display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:999px;font-size:13.5px;font-weight:800;border:1px solid #cbd5e1;background:#fff}
+.btn:hover{border-color:#0f172a}
+.btn.main{color:#fff;border-color:transparent}
+.s1 .badge,.s1 .btn.main{background:#2563eb}.s1 li::before{color:#2563eb}
+.s2 .badge,.s2 .btn.main{background:#2B3BFF}.s2 li::before{color:#2B3BFF}
+.s3 .badge,.s3 .btn.main{background:#F26A1B}.s3 li::before{color:#F26A1B}
+.tip{margin-top:40px;background:#fff;border:1px solid #e2e8f0;border-left:5px solid #0f172a;border-radius:0 14px 14px 0;padding:18px 22px;font-size:15px;color:#334155}
+.tip b{color:#0f172a}
+@media (max-width:960px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>포트폴리오 스타일 참고 예시</h1>
+  <p class="lead">GitHub Pages로 만든 포트폴리오 3가지 스타일입니다. 마음에 드는 스타일을 골라 내 내용으로 바꿔 보세요.</p>
+
+  <div class="grid">
+    <article class="card s1">
+      <div class="thumb"><img src="assets/mock/dashboard.svg" alt=""><span class="badge">스타일 1</span></div>
+      <div class="bd">
+        <h2>사이드바 원페이지형</h2>
+        <p>왼쪽 메뉴를 고정하고, 섹션 하나가 한 화면을 채웁니다.</p>
+        <ul><li>프로젝트마다 핵심 숫자 강조</li><li>브라우저 틀 + 화면 탭 전환</li><li>깔끔한 흰 배경 · 파란색 포인트</li></ul>
+        <div class="links"><a class="btn main" href="style1/">예시 보기 →</a><a class="btn" href="https://goalbangg-prog.github.io/Portfoilo/" target="_blank" rel="noopener">참고 원본</a><a class="btn" href="https://github.com/goalbangg-prog/Portfoilo" target="_blank" rel="noopener">원본 코드</a></div>
+      </div>
+    </article>
+
+    <article class="card s2">
+      <div class="thumb"><img src="assets/mock/chat.svg" alt=""><span class="badge">스타일 2</span></div>
+      <div class="bd">
+        <h2>발표형 슬라이드</h2>
+        <p>큰 화면에서는 16:9 발표 자료처럼 한 장씩 넘기고, 휴대폰에서는 스크롤로 읽습니다.</p>
+        <ul><li>←/→ 키 · 마우스 휠로 넘기기</li><li>장마다 한 줄 요약 · 단계 그림</li><li>'스크롤로 보기' 전환 버튼</li></ul>
+        <div class="links"><a class="btn main" href="style2/">예시 보기 →</a><a class="btn" href="https://sh11025.github.io/#home" target="_blank" rel="noopener">참고 원본</a><a class="btn" href="https://github.com/sh11025/sh11025.github.io" target="_blank" rel="noopener">원본 코드</a></div>
+      </div>
+    </article>
+
+    <article class="card s3">
+      <div class="thumb"><img src="assets/mock/report.svg" alt=""><span class="badge">스타일 3</span></div>
+      <div class="bd">
+        <h2>카테고리 표지형</h2>
+        <p>번호 붙은 사이드바와 큰 번호 표지로 작업을 분야별로 묶습니다.</p>
+        <ul><li>경력 타임라인 · 수상/자격 목록</li><li>분야별 표지(01·02·03)</li><li>프로젝트 자료 썸네일 줄</li></ul>
+        <div class="links"><a class="btn main" href="style3/">예시 보기 →</a><a class="btn" href="https://su4228-prog.github.io/seoyeonKo_portfolio/" target="_blank" rel="noopener">참고 원본</a><a class="btn" href="https://github.com/su4228-prog/seoyeonKo_portfolio/" target="_blank" rel="noopener">원본 코드</a></div>
+      </div>
+    </article>
+  </div>
+
+  <div class="tip"><b>내 포트폴리오로 바꾸는 법</b> — 원하는 스타일 폴더의 <b>index.html</b>을 복사해 이름·소개·프로젝트 글을 바꾸고, <b>assets/mock</b> 그림 자리에 내 화면 캡처를 넣으면 됩니다.</div>
+</div>
+</body>
+</html>

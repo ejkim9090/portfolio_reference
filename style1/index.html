@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>홍길동 Portfolio · 스타일 1 (사이드바 원페이지)</title>
+<meta name="description" content="AI 데이터 저널리스트 포트폴리오 예시 — 사이드바 원페이지 스타일">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --bg:#fff;--side:#f6f8fb;--soft:#f8fafc;--line:#e4e9f0;--line-2:#d5dde8;
+  --ink:#0f172a;--ink-2:#334155;--ink-3:#64748b;--ink-4:#94a3b8;
+  --blue:#1d4ed8;--blue-2:#2563eb;--blue-soft:#e8efff;
+  --sky:#0ea5e9;--sky-d:#0284c7;--sky-soft:#e0f2fe;--sky-ink:#075985;
+  --sans:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);font-size:16px;line-height:1.7;word-break:keep-all;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit;cursor:pointer}
+
+/* 사이드바 */
+.sidebar{position:fixed;inset:0 auto 0 0;width:210px;background:var(--side);border-right:1px solid var(--line);padding:30px 18px;display:flex;flex-direction:column;z-index:20}
+.logo{font-weight:900;font-size:16px;line-height:1.3;letter-spacing:.02em;padding:0 8px}
+.logo span{display:block;color:var(--blue-2)}
+.side-label{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--ink-4);margin:34px 8px 10px}
+.side-nav a{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:9px;font-size:14px;font-weight:600;color:var(--ink-2);border-left:3px solid transparent;transition:.2s}
+.side-nav a::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--ink-4);flex:none}
+.side-nav a:hover{background:#eef2f8}
+.side-nav a.on{background:var(--sky-soft);color:var(--sky-ink);border-left-color:var(--sky)}
+.side-nav a.on::before{background:var(--sky)}
+.side-foot{margin-top:auto;padding:0 8px;font-size:12px;color:var(--ink-4);line-height:1.7}
+.side-foot a{display:block;color:var(--ink-3);font-weight:600}
+.side-foot a:hover{color:var(--blue-2)}
+
+/* 레이아웃 */
+main{margin-left:210px}
+.section{min-height:100vh;display:flex;align-items:center;padding:70px 0;border-bottom:1px solid var(--line)}
+.section-inner{width:min(1360px,calc(100% - 120px));margin:0 auto}
+.label{font-size:12px;font-weight:900;letter-spacing:.16em;color:var(--sky-d)}
+
+/* 소개 */
+.about-top{display:flex;gap:40px;align-items:center;margin-top:18px}
+.photo{width:150px;height:190px;border-radius:16px;object-fit:cover;box-shadow:0 18px 40px -18px rgba(15,23,42,.45)}
+.kname{font-size:22px;font-weight:600;color:var(--ink-2)}
+.ename{font-size:56px;font-weight:900;letter-spacing:-.02em;line-height:1.1;color:#0b1f4d}
+.role{font-size:17px;font-weight:800;color:var(--blue-2);margin-top:10px}
+.intro{font-size:17px;color:var(--ink-2);margin-top:14px;line-height:1.8}
+.intro b{color:var(--ink)}
+.info3{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:40px;margin-top:50px;padding-top:30px;border-top:1px solid var(--line)}
+.info3 h4,.skills-title{font-size:12px;font-weight:900;letter-spacing:.16em;color:var(--ink-4);margin-bottom:14px}
+.kv{display:grid;grid-template-columns:72px 1fr;row-gap:10px;font-size:15px}
+.kv dt{font-size:12.5px;font-weight:700;color:var(--ink-3);padding-top:2px}
+.kv dd{font-weight:600}
+.kv dd small{display:block;font-size:13px;font-weight:400;color:var(--ink-3)}
+.skills-title{margin-top:40px}
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.skill{border:1px solid var(--line);border-radius:14px;padding:18px 20px;background:var(--soft)}
+.skill h5{font-size:12px;font-weight:900;letter-spacing:.14em;color:var(--ink-3);margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-size:13.5px;font-weight:600;padding:4px 11px;border-radius:7px;border:1px solid var(--line-2);background:#fff;color:var(--ink-2)}
+.chip.p{background:var(--blue-soft);border-color:#c9d8ff;color:var(--blue)}
+
+/* 프로젝트 */
+.project-layout{display:grid;grid-template-columns:460px 1fr;gap:48px;align-items:center}
+.project-meta{font-size:11.5px;font-weight:900;letter-spacing:.14em;color:var(--ink-4)}
+.project-title{font-size:34px;font-weight:900;letter-spacing:-.02em;line-height:1.25;margin-top:10px}
+.stack-line{font-size:14.5px;font-weight:800;color:var(--blue);margin-top:8px}
+.project-desc{font-size:16.5px;color:var(--ink-2);margin-top:16px;line-height:1.75}
+.figures{display:flex;gap:28px;margin-top:20px}
+.fig .n{font-size:34px;font-weight:900;color:var(--sky-d);line-height:1.1;letter-spacing:-.02em}
+.fig .n small{font-size:17px;font-weight:800;margin-left:2px}
+.fig .l{font-size:13px;color:var(--ink-3);margin-top:4px;line-height:1.45}
+.point-box{margin-top:20px;border:1px solid var(--line);background:var(--soft);border-radius:12px;padding:18px 20px}
+.point-box li{list-style:none;position:relative;padding-left:26px;font-size:15.5px;color:var(--ink-2);line-height:1.6}
+.point-box li+li{margin-top:8px}
+.point-box li::before{content:"→";position:absolute;left:0;color:var(--blue-2);font-weight:900}
+.point-box li b{color:var(--ink)}
+.info-box{margin-top:12px;border:1px solid var(--line);border-radius:12px;padding:14px 20px;display:grid;grid-template-columns:60px 1fr;row-gap:6px;font-size:14.5px}
+.info-box dt{color:var(--ink-3);font-size:13px;padding-top:1px}
+.info-box dd{color:var(--ink-2);font-weight:500}
+.insight{margin-top:12px;background:var(--sky-soft);color:var(--sky-ink);border-left:3px solid var(--sky);border-radius:9px;padding:13px 16px;font-size:15px;font-weight:600;line-height:1.6}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.btn{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 18px;border-radius:999px;font-size:14px;font-weight:800;border:1px solid var(--line-2);background:#fff;color:var(--ink);transition:.2s}
+.btn:hover{border-color:var(--blue-2);color:var(--blue-2)}
+.btn.primary{background:var(--blue-2);border-color:var(--blue-2);color:#fff;box-shadow:0 12px 24px -12px rgba(37,99,235,.55)}
+.btn.primary:hover{background:var(--blue);color:#fff}
+
+/* 화면 이미지 */
+.project-visual{min-width:0}
+.browser-frame{border-radius:12px;overflow:hidden;border:1px solid var(--line-2);background:#e9edf3;box-shadow:0 24px 50px rgba(15,23,42,.12)}
+.browser-bar{height:30px;display:flex;align-items:center;gap:7px;padding:0 14px}
+.browser-bar i{width:11px;height:11px;border-radius:50%}
+.browser-bar i:nth-child(1){background:#ff5f57}.browser-bar i:nth-child(2){background:#febc2e}.browser-bar i:nth-child(3){background:#28c840}
+.browser-bar span{margin-left:12px;font-size:12px;color:var(--ink-3)}
+.screen{position:relative;aspect-ratio:16/10;background:#f1f5f9;overflow:hidden}
+.shot{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .35s}
+.shot.active{opacity:1;visibility:visible}
+.shot img{width:100%;height:100%;object-fit:cover;cursor:zoom-in}
+.tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:20px}
+.tab{height:40px;padding:0 18px;border-radius:999px;border:1px solid var(--line-2);background:#fff;font-size:13.5px;font-weight:800;color:var(--ink-2);transition:.2s}
+.tab:hover{border-color:var(--blue-2)}
+.tab.active{background:var(--blue-2);border-color:var(--blue-2);color:#fff}
+.caption{text-align:center;font-size:13.5px;color:var(--ink-3);margin-top:12px}
+
+/* 연락 */
+.contact h2{font-size:44px;font-weight:900;letter-spacing:-.02em;line-height:1.3;margin-top:14px}
+.contact h2 span{color:var(--blue-2)}
+.contact p{font-size:17px;color:var(--ink-2);margin-top:16px}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.c-card{border:1px solid var(--line);border-radius:14px;padding:22px 24px;background:var(--soft);transition:.2s}
+.c-card:hover{border-color:var(--blue-2);transform:translateY(-2px)}
+.c-card small{font-size:12px;font-weight:900;letter-spacing:.14em;color:var(--ink-4)}
+.c-card b{display:block;font-size:17px;margin-top:6px}
+
+/* 확대 보기 */
+.lightbox{position:fixed;inset:0;background:rgba(15,23,42,.88);display:none;align-items:center;justify-content:center;z-index:99;padding:40px;cursor:zoom-out}
+.lightbox.show{display:flex}
+.lightbox img{max-width:min(1200px,100%);max-height:100%;border-radius:10px;background:#fff}
+
+/* 모바일 */
+@media (max-width:1100px){
+  .sidebar{position:sticky;top:0;inset:auto;width:100%;height:auto;flex-direction:row;align-items:center;padding:12px 16px;gap:12px;overflow-x:auto}
+  .side-label,.side-foot{display:none}
+  .logo span{display:inline;margin-left:4px}
+  .side-nav{display:flex;gap:4px}
+  .side-nav a{white-space:nowrap;border-left:0;padding:6px 10px}
+  .side-nav a::before{display:none}
+  main{margin-left:0}
+  .section{min-height:auto;padding:56px 0}
+  .section-inner{width:calc(100% - 40px)}
+  .project-layout,.info3,.contact-grid{grid-template-columns:1fr}
+  .skills{grid-template-columns:1fr 1fr}
+  .about-top{flex-direction:column;align-items:flex-start;gap:20px}
+  .ename{font-size:40px}
+  .project-visual{order:-1}
+}
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <a class="logo" href="#about">HONG GILDONG<span>PORTFOLIO</span></a>
+  <div class="side-label">MENU</div>
+  <nav class="side-nav">
+    <a href="#about" class="on">About</a>
+    <a href="#p1">RAG 팩트체크 봇</a>
+    <a href="#p2">데이터 탐사보도</a>
+    <a href="#p3">데이터 스토리</a>
+    <a href="#p4">뉴스 자동화</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="side-foot">
+    <a href="mailto:hong@example.com">hong@example.com</a>
+    <a href="https://github.com/">github.com/hong</a>
+    © 2026 Hong Gildong
+  </div>
+</aside>
+
+<main>
+<!-- ===== 소개 ===== -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <div class="label">ABOUT ME</div>
+    <div class="about-top">
+      <img class="photo" src="../assets/mock/profile.svg" alt="프로필 사진">
+      <div>
+        <div class="kname">홍길동</div>
+        <div class="ename">Hong Gildong</div>
+        <div class="role">AI 데이터 저널리스트 · 데이터 분석</div>
+        <p class="intro">숫자 속에 숨은 이야기를 찾아 <b>누구나 읽을 수 있는 기사</b>로 만듭니다.<br>
+        Python으로 데이터를 모으고 분석하며, <b>AI로 취재와 검증을 더 빠르고 정확하게</b> 합니다.</p>
+      </div>
+    </div>
+
+    <div class="info3">
+      <div>
+        <h4>PROFILE</h4>
+        <dl class="kv">
+          <dt>생년</dt><dd>1998</dd>
+          <dt>학력</dt><dd>한국대학교 미디어학과<small>2017 – 2023</small></dd>
+          <dt>교육</dt><dd>AI 기반 데이터 저널리스트 양성 과정<small>2026.06 – 2026.12</small></dd>
+        </dl>
+      </div>
+      <div>
+        <h4>EXPERIENCE</h4>
+        <dl class="kv">
+          <dt>2024–25</dt><dd>지역신문 인턴 기자<small>사회부 · 데이터 기사 보조</small></dd>
+          <dt>2023</dt><dd>대학 학보사 편집장<small>교내 설문 데이터 기획 기사</small></dd>
+        </dl>
+      </div>
+      <div>
+        <h4>CERTIFICATE</h4>
+        <dl class="kv">
+          <dt>2026</dt><dd>ADsP 데이터분석 준전문가</dd>
+          <dt>2025</dt><dd>SQLD SQL 개발자</dd>
+          <dt>2024</dt><dd>컴퓨터활용능력 1급</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="skills-title">SKILLS</div>
+    <div class="skills">
+      <div class="skill"><h5>DATA</h5><div class="chips"><span class="chip p">Python</span><span class="chip p">Pandas</span><span class="chip">SQL</span><span class="chip">Excel</span></div></div>
+      <div class="skill"><h5>VISUAL</h5><div class="chips"><span class="chip p">Power BI</span><span class="chip">Plotly</span><span class="chip">Flourish</span></div></div>
+      <div class="skill"><h5>AI</h5><div class="chips"><span class="chip p">LangChain</span><span class="chip">RAG</span><span class="chip">ChatGPT</span><span class="chip">Claude</span></div></div>
+      <div class="skill"><h5>TOOL</h5><div class="chips"><span class="chip">n8n</span><span class="chip">Selenium</span><span class="chip">GitHub</span><span class="chip">Streamlit</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 프로젝트 1 ===== -->
+<section class="section" id="p1">
+  <div class="section-inner project-layout">
+    <div class="project-text">
+      <div class="project-meta">PROJECT 01 · 팀 프로젝트 (4인) · 2026.09</div>
+      <h2 class="project-title">선거 공약 팩트체크<br>RAG 챗봇</h2>
+      <div class="stack-line">Python · LangChain · ChromaDB · Streamlit</div>
+      <p class="project-desc">후보별 공약집을 AI가 읽고, 질문하면 <b>근거 문서와 쪽수까지</b> 함께 답하는 챗봇입니다. 유권자가 공약을 쉽게 비교하도록 돕습니다.</p>
+      <div class="figures">
+        <div class="fig"><div class="n">120<small>건</small></div><div class="l">공약 문서<br>학습</div></div>
+        <div class="fig"><div class="n">100<small>%</small></div><div class="l">답변마다<br>출처 표시</div></div>
+        <div class="fig"><div class="n">3<small>초</small></div><div class="l">평균<br>응답 시간</div></div>
+      </div>
+      <ul class="point-box">
+        <li><b>문서 쪼개기·검색 최적화</b>로 엉뚱한 답(환각) 줄임</li>
+        <li>답변 아래 <b>공약집 원문 쪽수</b>를 함께 보여 줌</li>
+      </ul>
+      <dl class="info-box"><dt>역할</dt><dd>데이터 수집·전처리, 프롬프트 설계</dd><dt>기간</dt><dd>3주</dd></dl>
+      <div class="insight">💡 AI의 답보다 "근거를 보여 주는 것"이 신뢰를 만든다는 걸 배웠습니다.</div>
+      <div class="btns"><a class="btn primary" href="#">서비스 보기 ↗</a><a class="btn" href="#">GitHub</a></div>
+    </div>
+    <div class="project-visual" data-gallery>
+      <div class="browser-frame">
+        <div class="browser-bar"><i></i><i></i><i></i><span>factcheck-bot.streamlit.app</span></div>
+        <div class="screen">
+          <div class="shot active"><img src="../assets/mock/chat.svg" alt="챗봇 답변 화면"></div>
+          <div class="shot"><img src="../assets/mock/workflow.svg" alt="데이터 처리 흐름"></div>
+        </div>
+      </div>
+      <div class="tabs"><button class="tab active">답변 화면</button><button class="tab">처리 흐름</button></div>
+      <p class="caption">질문하면 공약집 근거와 함께 답합니다</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 프로젝트 2 ===== -->
+<section class="section" id="p2">
+  <div class="section-inner project-layout">
+    <div class="project-text">
+      <div class="project-meta">PROJECT 02 · 개인 프로젝트 · 2026.10</div>
+      <h2 class="project-title">배송은 왜 늦어질까?<br>이커머스 데이터 탐사</h2>
+      <div class="stack-line">Python · Pandas · Plotly · Power BI</div>
+      <p class="project-desc">브라질 이커머스 주문 10만 건을 분석해 <b>배송 지연이 별점에 미치는 영향</b>을 밝히고, 지역별 차이를 지도와 대시보드로 보여 줬습니다.</p>
+      <div class="figures">
+        <div class="fig"><div class="n">10<small>만 건</small></div><div class="l">주문 데이터<br>분석</div></div>
+        <div class="fig"><div class="n">−1.7<small>점</small></div><div class="l">지연 시<br>별점 하락</div></div>
+      </div>
+      <ul class="point-box">
+        <li><b>9개 표를 하나로 합쳐</b> 주문–배송–리뷰 흐름 정리</li>
+        <li>지연 배송 비율이 높은 <b>지역 TOP 5</b> 찾아냄</li>
+      </ul>
+      <dl class="info-box"><dt>데이터</dt><dd>Olist Brazilian E-Commerce (Kaggle)</dd><dt>기간</dt><dd>2주</dd></dl>
+      <div class="insight">💡 "평균"만 보면 놓치는 이야기를 지역별로 쪼개 보니 찾을 수 있었습니다.</div>
+      <div class="btns"><a class="btn primary" href="#">대시보드 보기 ↗</a><a class="btn" href="#">분석 노트북</a></div>
+    </div>
+    <div class="project-visual" data-gallery>
+      <div class="browser-frame">
+        <div class="browser-bar"><i></i><i></i><i></i><span>Power BI · 주문 탐사 대시보드</span></div>
+        <div class="screen">
+          <div class="shot active"><img src="../assets/mock/dashboard.svg" alt="대시보드"></div>
+          <div class="shot"><img src="../assets/mock/report.svg" alt="기사 화면"></div>
+        </div>
+      </div>
+      <div class="tabs"><button class="tab active">대시보드</button><button class="tab">기사 초안</button></div>
+      <p class="caption">핵심 숫자 4개와 지역별 지연률을 한 화면에</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 프로젝트 3 ===== -->
+<section class="section" id="p3">
+  <div class="section-inner project-layout">
+    <div class="project-text">
+      <div class="project-meta">PROJECT 03 · 팀 프로젝트 (3인) · 2026.11</div>
+      <h2 class="project-title">데이터 스토리 기사와<br>AI 숏폼 영상</h2>
+      <div class="stack-line">Flourish · Python · AI 영상 도구</div>
+      <p class="project-desc">공공자전거 대여 기록으로 <b>서울의 출퇴근 풍경</b>을 기사로 쓰고, 같은 내용을 1분 숏폼 영상으로 만들었습니다.</p>
+      <div class="figures">
+        <div class="fig"><div class="n">1,200<small>만</small></div><div class="l">대여 기록<br>분석</div></div>
+        <div class="fig"><div class="n">58<small>초</small></div><div class="l">숏폼<br>영상</div></div>
+      </div>
+      <ul class="point-box">
+        <li>기사 하나를 <b>글·차트·영상</b> 세 가지로 전달</li>
+        <li>AI 내레이션과 <b>자동 자막</b>으로 제작 시간 단축</li>
+      </ul>
+      <div class="btns"><a class="btn primary" href="#">기사 보기 ↗</a><a class="btn" href="#">영상 보기</a></div>
+    </div>
+    <div class="project-visual" data-gallery>
+      <div class="browser-frame">
+        <div class="browser-bar"><i></i><i></i><i></i><span>data-story · 서울 공공자전거</span></div>
+        <div class="screen">
+          <div class="shot active"><img src="../assets/mock/report.svg" alt="데이터 기사"></div>
+          <div class="shot"><img src="../assets/mock/video.svg" alt="숏폼 영상"></div>
+        </div>
+      </div>
+      <div class="tabs"><button class="tab active">기사</button><button class="tab">숏폼 영상</button></div>
+      <p class="caption">같은 데이터를 기사와 영상으로</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 프로젝트 4 ===== -->
+<section class="section" id="p4">
+  <div class="section-inner project-layout">
+    <div class="project-text">
+      <div class="project-meta">PROJECT 04 · 개인 프로젝트 · 2026.08</div>
+      <h2 class="project-title">매일 아침 뉴스 브리핑<br>자동화</h2>
+      <div class="stack-line">BeautifulSoup · Selenium · n8n · Slack</div>
+      <p class="project-desc">관심 키워드 기사를 <b>매일 아침 자동으로 모아 요약</b>하고, 구글 시트에 쌓으면서 슬랙으로 알려 줍니다.</p>
+      <div class="figures">
+        <div class="fig"><div class="n">48<small>건</small></div><div class="l">하루 평균<br>수집 기사</div></div>
+        <div class="fig"><div class="n">30<small>분</small></div><div class="l">하루 절약<br>시간</div></div>
+      </div>
+      <ul class="point-box">
+        <li>크롤링 → AI 요약 → 저장·알림을 <b>한 흐름으로 연결</b></li>
+        <li>중복 기사를 걸러 <b>읽을 것만</b> 전달</li>
+      </ul>
+      <div class="btns"><a class="btn primary" href="#">워크플로 보기 ↗</a><a class="btn" href="#">GitHub</a></div>
+    </div>
+    <div class="project-visual" data-gallery>
+      <div class="browser-frame">
+        <div class="browser-bar"><i></i><i></i><i></i><span>n8n · 뉴스 브리핑 워크플로</span></div>
+        <div class="screen">
+          <div class="shot active"><img src="../assets/mock/workflow.svg" alt="워크플로"></div>
+          <div class="shot"><img src="../assets/mock/chat.svg" alt="결과 화면"></div>
+        </div>
+      </div>
+      <div class="tabs"><button class="tab active">워크플로</button><button class="tab">결과</button></div>
+      <p class="caption">5개 노드로 만든 아침 브리핑</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 연락 ===== -->
+<section class="section contact" id="contact">
+  <div class="section-inner">
+    <div class="label">CONTACT</div>
+    <h2>데이터로 <span>좋은 질문</span>을 던지는<br>기자가 되겠습니다.</h2>
+    <p>함께 일할 기회를 기다립니다. 편하게 연락 주세요.</p>
+    <div class="contact-grid">
+      <a class="c-card" href="mailto:hong@example.com"><small>EMAIL</small><b>hong@example.com</b></a>
+      <a class="c-card" href="https://github.com/"><small>GITHUB</small><b>github.com/hong</b></a>
+      <a class="c-card" href="#"><small>BLOG</small><b>hong.tistory.com</b></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="lightbox" id="lb"><img alt=""></div>
+
+<script>
+// 스크린샷 탭 전환
+document.querySelectorAll('[data-gallery]').forEach(g=>{
+  const shots=g.querySelectorAll('.shot'), tabs=g.querySelectorAll('.tab');
+  tabs.forEach((t,i)=>t.addEventListener('click',()=>{
+    shots.forEach((s,j)=>s.classList.toggle('active',i===j));
+    tabs.forEach((b,j)=>b.classList.toggle('active',i===j));
+  }));
+});
+// 이미지 확대
+const lb=document.getElementById('lb');
+document.querySelectorAll('.shot img').forEach(img=>img.addEventListener('click',()=>{lb.querySelector('img').src=img.src;lb.classList.add('show')}));
+lb.addEventListener('click',()=>lb.classList.remove('show'));
+// 현재 보고 있는 메뉴 표시
+const links=[...document.querySelectorAll('.side-nav a')];
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}}),{threshold:.5});
+document.querySelectorAll('main .section').forEach(s=>io.observe(s));
+</script>
+</body>
+</html>

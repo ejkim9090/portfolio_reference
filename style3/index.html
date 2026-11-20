@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>홍길동 포트폴리오 · 스타일 3 (카테고리형)</title>
+<meta name="description" content="AI 데이터 저널리스트 포트폴리오 예시 — 번호 사이드바·카테고리 표지 스타일">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{--or:#F26A1B;--or-dark:#D9560C;--or-soft:#FFF4EC;--or-line:#FFDCC6;--ink:#111;--text:#222;--sub:#5f6063;--mute:#9b9b9b;--line:#EEEEEC;--soft:#FAFAF8;--band:#F5F5F3}
+body{font-family:"Pretendard","Noto Sans KR",Arial,sans-serif;background:#fff;color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased;word-break:keep-all}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font-family:inherit;cursor:pointer}
+
+/* 사이드바 */
+.sidebar{position:fixed;top:0;left:0;width:236px;height:100vh;background:#fff;border-right:1px solid var(--line);padding:34px 22px;display:flex;flex-direction:column;z-index:1000}
+.side-logo{font-size:20px;font-weight:900;letter-spacing:-.8px;color:var(--ink);line-height:1.25;margin-bottom:42px}
+.side-logo i{font-style:normal;color:var(--or)}
+.side-nav{list-style:none;display:grid;gap:4px}
+.side-nav a{display:flex;gap:8px;align-items:baseline;padding:10px;border-radius:10px;font-size:13.5px;font-weight:800;color:#555;transition:.15s;white-space:nowrap}
+.side-nav a .n{font-size:12px;font-weight:900;color:#bdbdbd}
+.side-nav a:hover{background:var(--soft);color:var(--ink)}
+.side-nav a.active{background:var(--or-soft);color:var(--or-dark)}
+.side-nav a.active .n{color:var(--or)}
+.side-nav .sub a{padding:6px 10px 6px 30px;font-size:12.5px;font-weight:700;color:#888}
+.side-foot{margin-top:auto;font-size:12px;color:var(--mute);line-height:1.8}
+.side-foot a{display:block;font-weight:700;color:var(--sub)}
+.side-foot a:hover{color:var(--or)}
+.main{margin-left:236px;min-width:0}
+
+.section{padding:84px 64px;border-bottom:1px solid var(--line)}
+.section-inner{max-width:1360px;margin:0 auto}
+.uline{display:block;width:34px;height:3px;border-radius:3px;background:var(--or);margin-top:8px}
+.kicker{font-size:12px;font-weight:900;letter-spacing:3px;color:var(--or);margin-bottom:10px}
+
+/* 소개 */
+.about{min-height:100vh;padding:0 64px 40px}
+.about-top{padding:44px 0 36px;margin-bottom:18px;background:var(--band);box-shadow:0 0 0 100vmax var(--band);clip-path:inset(0 -100vmax)}
+.hero{display:flex;gap:28px;align-items:center}
+.hero-photo{width:104px;height:130px;border-radius:14px;overflow:hidden;flex:none;box-shadow:0 10px 24px rgba(0,0,0,.08)}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hi{font-size:16px;font-weight:800;color:var(--ink)}
+.hero h1{font-size:clamp(32px,3vw,46px);font-weight:900;letter-spacing:-2px;line-height:1.1;color:var(--ink);margin:2px 0 12px}
+.hero h1 span{color:var(--or)}
+.role{font-size:15px;font-weight:800;color:#4a4a4a;margin-bottom:6px}
+.copy{font-size:15.5px;color:var(--sub);line-height:1.75}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line);margin-bottom:34px}
+.fact{padding:12px 20px;border-left:1px solid var(--line)}
+.fact:first-child{border-left:0;padding-left:0}
+.fact dt{font-size:11.5px;font-weight:900;letter-spacing:2px;color:var(--mute);margin-bottom:4px}
+.fact dd{font-size:14px;font-weight:800;color:var(--ink)}
+.fact dd small{display:block;font-size:12.5px;font-weight:600;color:var(--sub)}
+.block-title{font-size:18px;font-weight:900;color:var(--ink);letter-spacing:-.4px;margin-bottom:16px}
+.exp-line{display:grid;grid-template-columns:repeat(4,1fr);position:relative;margin-bottom:56px}
+.exp-line::before{content:"";position:absolute;left:8px;right:8px;top:7px;border-top:2px dashed var(--or-line)}
+.exp-item{position:relative;padding:26px 12px 0 0}
+.exp-item::before{content:"";position:absolute;left:0;top:0;width:16px;height:16px;border-radius:50%;background:#fff;border:3px solid var(--or-line)}
+.exp-item.now::before{background:var(--or);border-color:var(--or);box-shadow:0 0 0 5px var(--or-soft)}
+.exp-item .when{font-size:12.5px;font-weight:900;color:var(--or)}
+.exp-item b{display:block;font-size:16px;font-weight:900;color:var(--ink);margin-top:2px}
+.exp-item span{display:block;font-size:13px;color:var(--sub);font-weight:700}
+.about-bottom{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr);gap:48px}
+.awards{display:grid;gap:12px}
+.award{display:grid;grid-template-columns:36px 1fr auto;gap:12px;align-items:center}
+.award .ic{width:36px;height:36px;border-radius:50%;background:var(--or-soft);display:grid;place-items:center;font-size:16px}
+.award b{display:block;font-size:14px;font-weight:900;color:var(--ink)}
+.award span{font-size:13px;color:var(--sub);font-weight:600}
+.award small{font-size:12px;color:var(--mute);font-weight:700}
+.skill{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.skill:last-child{border-bottom:0}
+.skill h4{font-size:11.5px;font-weight:900;letter-spacing:1px;color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{font-size:12px;font-weight:800;color:#444;padding:3px 10px;border-radius:999px;background:var(--soft);border:1px solid var(--line)}
+.chip.pt{color:var(--or-dark);background:var(--or-soft);border-color:var(--or-line)}
+
+/* 카테고리 표지 */
+.cat-page{padding:0 64px}
+.cat-head{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:44px 0;background:var(--band);box-shadow:0 0 0 100vmax var(--band);clip-path:inset(0 -100vmax)}
+.cat-left{display:flex;align-items:flex-end;gap:20px}
+.cat-no{font-size:72px;font-weight:900;line-height:.9;color:var(--or);letter-spacing:-3px}
+.cat-kicker{font-size:11.5px;font-weight:900;letter-spacing:2.5px;color:var(--mute)}
+.cat-head h2{font-size:clamp(26px,2.3vw,34px);font-weight:900;color:var(--ink);letter-spacing:-1px;line-height:1.2}
+.cat-head p{font-size:14.5px;color:var(--sub);margin-top:2px}
+.cat-tags{display:flex;flex-wrap:wrap;gap:6px}
+.cat-tags span{padding:6px 14px;border-radius:999px;background:var(--or);color:#fff;font-size:12.5px;font-weight:800}
+
+/* 프로젝트 */
+.p-layout{display:grid;grid-template-columns:minmax(340px,.82fr) minmax(0,1.18fr);gap:48px;align-items:center}
+.p-meta{font-size:13px;font-weight:800;color:var(--or);margin-bottom:6px}
+.p-title{font-size:clamp(28px,2.4vw,36px);font-weight:900;color:var(--ink);letter-spacing:-1.2px;line-height:1.2}
+.p-sub{font-size:15px;font-weight:800;color:#4a4a4a;margin-top:4px}
+.p-stack{font-size:13px;font-weight:700;color:var(--mute);margin-top:6px}
+.p-summary{font-size:15px;line-height:1.7;color:var(--sub);margin:14px 0 18px}
+.p-summary b{color:var(--ink)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+.stat{background:var(--or-soft);border-radius:12px;padding:12px 14px}
+.stat b{display:block;font-size:20px;font-weight:900;color:var(--or-dark);letter-spacing:-.5px}
+.stat span{font-size:12px;font-weight:700;color:var(--sub)}
+.label{font-size:12px;font-weight:900;letter-spacing:1.5px;color:var(--ink);margin-bottom:8px}
+.list{list-style:none;display:grid;gap:6px;margin-bottom:16px}
+.list li{position:relative;padding-left:16px;font-size:14px;color:var(--sub)}
+.list li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--or)}
+.list li b{color:var(--ink)}
+.info-box{display:grid;grid-template-columns:52px 1fr;row-gap:5px;font-size:13.5px;border-top:1px solid var(--line);padding-top:12px;margin-bottom:18px}
+.info-box dt{font-weight:800;color:var(--mute)}
+.info-box dd{color:var(--sub);font-weight:600}
+.actions{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-flex;align-items:center;height:40px;padding:0 18px;border-radius:999px;font-size:13.5px;font-weight:800;border:1px solid #ddd;background:#fff;color:var(--ink);transition:.15s}
+.btn:hover{border-color:var(--or);color:var(--or-dark)}
+.btn.primary{background:var(--or);border-color:var(--or);color:#fff}
+.btn.primary:hover{background:var(--or-dark);color:#fff}
+.project+.project{margin-top:0}
+.browser-frame{border-radius:14px;overflow:hidden;border:1px solid #e3e3e0;box-shadow:0 22px 48px rgba(0,0,0,.08);background:#f1f1ef}
+.browser-top{height:32px;display:flex;align-items:center;gap:7px;padding:0 14px}
+.dot{width:11px;height:11px;border-radius:50%}.red{background:#ff5f57}.yellow{background:#febc2e}.green{background:#28c840}
+.url{margin-left:10px;font-size:12px;color:var(--mute);font-weight:600}
+.project-screen{position:relative;aspect-ratio:16/10;background:#fff}
+.pane{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .3s}
+.pane.active{opacity:1;visibility:visible}
+.pane img{width:100%;height:100%;object-fit:cover;cursor:zoom-in}
+.screen-tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:16px}
+.screen-tab{height:36px;padding:0 16px;border-radius:999px;border:1px solid #ddd;background:#fff;font-size:13px;font-weight:800;color:#555}
+.screen-tab.active{background:var(--ink);border-color:var(--ink);color:#fff}
+.wide-block{margin-top:56px;padding-top:32px;border-top:1px dashed #d5d5d5}
+.wide-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:18px}
+.wide-head h3{font-size:18px;font-weight:900;color:var(--ink)}
+.page-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.page-btn{border:1px solid #e3e3e0;border-radius:10px;overflow:hidden;background:#fff;padding:0;transition:.15s}
+.page-btn:hover{border-color:var(--or);transform:translateY(-2px)}
+.page-btn img{width:100%;aspect-ratio:16/10;object-fit:cover}
+
+/* 연락 */
+.contact{background:var(--ink);color:#fff;border-bottom:0}
+.contact h2{font-size:clamp(28px,3vw,42px);font-weight:900;letter-spacing:-1.5px;line-height:1.3}
+.contact h2 span{color:var(--or)}
+.contact p{color:#bbb;margin-top:12px}
+.contact .actions{margin-top:28px}
+.contact .btn{background:transparent;color:#fff;border-color:#444}
+.contact .btn.primary{background:var(--or);border-color:var(--or)}
+
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:2000;padding:40px;cursor:zoom-out}
+.lightbox.show{display:flex}
+.lightbox img{max-width:min(1200px,100%);max-height:100%;border-radius:10px;background:#fff}
+
+@media (max-width:1100px){
+  .sidebar{position:sticky;width:100%;height:auto;flex-direction:row;align-items:center;padding:12px 16px;gap:14px;overflow-x:auto}
+  .side-logo{margin:0;white-space:nowrap;font-size:17px}
+  .side-nav{display:flex}.side-nav .sub,.side-foot{display:none}
+  .main{margin-left:0}
+  .section,.about,.cat-page{padding-left:20px;padding-right:20px}
+  .about-bottom,.p-layout,.facts{grid-template-columns:1fr;gap:28px}
+  .exp-line{grid-template-columns:1fr 1fr;row-gap:24px}.exp-line::before{display:none}
+  .hero{flex-direction:column;align-items:flex-start}
+  .page-strip{grid-template-columns:repeat(3,1fr)}
+  .fact{border-left:0;padding-left:0}
+}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+  <a class="side-logo" href="#about">HONG<i>.</i><br>PORTFOLIO</a>
+  <ul class="side-nav">
+    <li><a href="#about" data-cat="about" class="active"><span class="n">00</span>About</a></li>
+    <li><a href="#data" data-cat="data"><span class="n">01</span>데이터 분석</a></li>
+    <li class="sub"><a href="#s-olist">이커머스 탐사</a></li>
+    <li class="sub"><a href="#s-bike">공공자전거 스토리</a></li>
+    <li><a href="#ai" data-cat="ai"><span class="n">02</span>AI · 자동화</a></li>
+    <li class="sub"><a href="#s-rag">팩트체크 봇</a></li>
+    <li class="sub"><a href="#s-n8n">뉴스 브리핑</a></li>
+    <li><a href="#content" data-cat="content"><span class="n">03</span>콘텐츠</a></li>
+    <li><a href="#contact" data-cat="contact"><span class="n">04</span>Contact</a></li>
+  </ul>
+  <div class="side-foot">
+    <a href="mailto:hong@example.com">hong@example.com</a>
+    <a href="https://github.com/">github.com/hong</a>
+  </div>
+</aside>
+
+<main class="main">
+<!-- ===== 소개 ===== -->
+<section class="about" id="about" data-cat="about">
+  <div class="section-inner">
+    <div class="about-top">
+      <div class="kicker">ABOUT ME</div>
+      <div class="hero">
+        <div class="hero-photo"><img src="../assets/mock/profile.svg" alt="프로필"></div>
+        <div>
+          <div class="hi">안녕하세요,</div>
+          <h1>데이터로 묻는 기자 <span>홍길동</span>입니다</h1>
+          <div class="role">AI 데이터 저널리스트 · 데이터 분석 · 자동화</div>
+          <p class="copy">숫자에서 질문을 찾고, AI로 검증하고, 누구나 읽기 쉬운 이야기로 전합니다.</p>
+        </div>
+      </div>
+    </div>
+    <dl class="facts">
+      <div class="fact"><dt>EDUCATION</dt><dd>한국대학교 미디어학과<small>2017 – 2023</small></dd></div>
+      <div class="fact"><dt>TRAINING</dt><dd>AI 기반 데이터 저널리스트 양성 과정<small>2026.06 – 2026.12</small></dd></div>
+      <div class="fact"><dt>CONTACT</dt><dd><a href="mailto:hong@example.com">hong@example.com</a><small>github.com/hong</small></dd></div>
+    </dl>
+
+    <div class="block-title">EXPERIENCE<span class="uline"></span></div>
+    <div class="exp-line">
+      <div class="exp-item"><div class="when">2023</div><b>학보사 편집장</b><span>교내 설문 데이터 기획 기사</span></div>
+      <div class="exp-item"><div class="when">2024 – 2025</div><b>지역신문 인턴 기자</b><span>사회부 · 데이터 기사 보조</span></div>
+      <div class="exp-item"><div class="when">2025</div><b>SQLD · ADsP 취득</b><span>데이터 분석 기초</span></div>
+      <div class="exp-item now"><div class="when">2026 · NOW</div><b>AI 데이터 저널리스트 과정</b><span>프로젝트 4개 완성</span></div>
+    </div>
+
+    <div class="about-bottom">
+      <div>
+        <div class="block-title">AWARDS & CERTIFICATE<span class="uline"></span></div>
+        <div class="awards">
+          <div class="award"><span class="ic">🏆</span><div><b>프로젝트 발표회 우수상</b><span>RAG 선거 팩트체크 봇</span></div><small>2026.11</small></div>
+          <div class="award"><span class="ic">📜</span><div><b>ADsP</b><span>데이터분석 준전문가</span></div><small>2026.03</small></div>
+          <div class="award"><span class="ic">📜</span><div><b>SQLD</b><span>SQL 개발자</span></div><small>2025.09</small></div>
+        </div>
+      </div>
+      <div>
+        <div class="block-title">SKILLS<span class="uline"></span></div>
+        <div class="skill"><h4>DATA</h4><div class="chips"><span class="chip pt">Python</span><span class="chip pt">Pandas</span><span class="chip">SQL</span><span class="chip">Excel</span></div></div>
+        <div class="skill"><h4>VISUALIZATION</h4><div class="chips"><span class="chip pt">Power BI</span><span class="chip">Plotly</span><span class="chip">Flourish</span></div></div>
+        <div class="skill"><h4>AI</h4><div class="chips"><span class="chip pt">LangChain</span><span class="chip">RAG</span><span class="chip">ChatGPT</span><span class="chip">Claude</span></div></div>
+        <div class="skill"><h4>AUTOMATION</h4><div class="chips"><span class="chip">n8n</span><span class="chip">Selenium</span><span class="chip">BeautifulSoup</span></div></div>
+        <div class="skill"><h4>COLLABORATION</h4><div class="chips"><span class="chip">GitHub</span><span class="chip">Notion</span><span class="chip">Slack</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 01 데이터 분석 ===== -->
+<section class="cat-page" id="data" data-cat="data"><div class="section-inner">
+  <div class="cat-head">
+    <div class="cat-left"><div class="cat-no">01</div><div><div class="cat-kicker">DATA ANALYSIS</div><h2>데이터 분석 · 탐사보도</h2><p>큰 데이터에서 독자가 궁금해할 질문을 찾습니다</p></div></div>
+    <div class="cat-tags"><span>Python</span><span>Pandas</span><span>Power BI</span></div>
+  </div>
+</div></section>
+
+<section class="section project" id="s-olist" data-cat="data"><div class="section-inner">
+  <div class="p-layout">
+    <div class="p-text">
+      <div class="p-meta">PERSONAL PROJECT · 2026.10</div>
+      <h3 class="p-title">배송은 왜 늦어질까?</h3>
+      <div class="p-sub">이커머스 주문 10만 건으로 쓴 데이터 탐사 기사</div>
+      <div class="p-stack">Python · Pandas · Plotly · Power BI</div>
+      <p class="p-summary">브라질 이커머스 주문 데이터를 분석해 <b>배송 지연과 별점의 관계</b>를 밝히고, 지역별 차이를 대시보드로 정리했습니다.</p>
+      <div class="stats"><div class="stat"><b>10만 건</b><span>주문 데이터</span></div><div class="stat"><b>9개</b><span>표 통합</span></div><div class="stat"><b>−1.7점</b><span>지연 시 별점</span></div></div>
+      <div class="label">핵심 내용</div>
+      <ul class="list"><li>주문–배송–리뷰 표를 합쳐 <b>한 흐름</b>으로 정리</li><li>지연 배송 비율이 높은 <b>지역 TOP 5</b> 발견</li><li>핵심 숫자 4개를 담은 <b>Power BI 대시보드</b> 제작</li></ul>
+      <dl class="info-box"><dt>기간</dt><dd>2주</dd><dt>역할</dt><dd>분석·시각화·기사 작성 (개인)</dd><dt>데이터</dt><dd>Kaggle Olist 공개 데이터</dd></dl>
+      <div class="actions"><a class="btn primary" href="#">대시보드 보기 →</a><a class="btn" href="#">GitHub</a></div>
+    </div>
+    <div class="project-visual" data-gallery>
+      <div class="browser-frame"><div class="browser-top"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="url">Power BI · 주문 탐사</span></div>
+        <div class="project-screen"><div class="pane active"><img src="../assets/mock/dashboard.svg" alt="대시보드"></div><div class="pane"><img src="../assets/mock/report.svg" alt="기사"></div></div></div>
+      <div class="screen-tabs"><button class="screen-tab active">대시보드</button><button class="screen-tab">기사 초안</button></div>
+    </div>
+  </div>
+  <div class="wide-block">
+    <div class="wide-head"><h3>프로젝트 자료<span class="uline"></span></h3><div class="actions"><a class="btn" href="#">PDF 다운로드</a></div></div>
+    <div class="page-strip">
+      <button class="page-btn"><img src="../assets/mock/report.svg" alt="1쪽"></button>
+      <button class="page-btn"><img src="../assets/mock/dashboard.svg" alt="2쪽"></button>
+      <button class="page-btn"><img src="../assets/mock/workflow.svg" alt="3쪽"></button>
+      <button class="page-btn"><img src="../assets/mock/chat.svg" alt="4쪽"></button>
+      <button class="page-btn"><img src="../assets/mock/video.svg" alt="5쪽"></button>
+    </div>
+  </div>
+</div></section>
+
+<section class="section project" id="s-bike" data-cat="data"><div class="section-inner">
+  <div class="p-layout">
+    <div class="p-text">
+      <div class="p-meta">TEAM PROJECT · 3인 · 2026.11</div>
+      <h3 class="p-title">서울 공공자전거 데이터 스토리</h3>
+      <div class="p-sub">대여 기록 1,200만 건으로 본 서울의 출퇴근</div>
+      <div class="p-stack">Python · Flourish</div>
+      <p class="p-summary">시간대·정류소별 대여 기록을 분석해 <b>출근길 오전 8시</b>와 <b>퇴근길 오후 6시</b>에 몰리는 이동 흐름을 기사로 풀었습니다.</p>
+      <div class="stats"><div class="stat"><b>1,200만</b><span>대여 기록</span></div><div class="stat"><b>2,700곳</b><span>정류소</span></div><div class="stat"><b>차트 6개</b><span>인터랙티브</span></div></div>
+      <ul class="list"><li>시간대별 막대그래프로 <b>두 번의 정점</b>을 한눈에</li><li>독자가 직접 동네를 찾아보는 <b>인터랙티브 지도</b></li></ul>
+      <div class="actions"><a class="btn primary" href="#">기사 보기 →</a></div>
+    </div>
+    <div class="project-visual" data-gallery>
+      <div class="browser-frame"><div class="browser-top"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="url">data-story · 서울 공공자전거</span></div>
+        <div class="project-screen"><div class="pane active"><img src="../assets/mock/report.svg" alt="기사"></div></div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== 02 AI · 자동화 ===== -->
+<section class="cat-page" id="ai" data-cat="ai"><div class="section-inner">
+  <div class="cat-head">
+    <div class="cat-left"><div class="cat-no">02</div><div><div class="cat-kicker">AI & AUTOMATION</div><h2>AI · 자동화</h2><p>취재와 검증의 반복 작업을 AI에게 맡깁니다</p></div></div>
+    <div class="cat-tags"><span>LangChain</span><span>RAG</span><span>n8n</span></div>
+  </div>
+</div></section>
+
+<section class="section project" id="s-rag" data-cat="ai"><div class="section-inner">
+  <div class="p-layout">
+    <div class="p-text">
+      <div class="p-meta">TEAM PROJECT · 4인 · 2026.09</div>
+      <h3 class="p-title">선거 공약 팩트체크 봇</h3>
+      <div class="p-sub">근거 문서를 함께 보여 주는 RAG 챗봇</div>
+      <div class="p-stack">Python · LangChain · ChromaDB · Streamlit</div>
+      <p class="p-summary">후보별 공약집을 AI가 읽고, 질문하면 <b>근거 문서와 쪽수까지</b> 함께 답합니다.</p>
+      <div class="stats"><div class="stat"><b>120건</b><span>공약 문서</span></div><div class="stat"><b>100%</b><span>출처 표시</span></div><div class="stat"><b>3초</b><span>평균 응답</span></div></div>
+      <div class="label">핵심 내용</div>
+      <ul class="list"><li>문서 쪼개기·검색 최적화로 <b>엉뚱한 답(환각)</b> 줄임</li><li>과정 프로젝트 발표회 <b>우수상</b></li></ul>
+      <dl class="info-box"><dt>역할</dt><dd>데이터 수집·전처리, 프롬프트 설계</dd></dl>
+      <div class="actions"><a class="btn primary" href="#">서비스 보기 →</a><a class="btn" href="#">GitHub</a></div>
+    </div>
+    <div class="project-visual" data-gallery>
+      <div class="browser-frame"><div class="browser-top"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="url">factcheck-bot.streamlit.app</span></div>
+        <div class="project-screen"><div class="pane active"><img src="../assets/mock/chat.svg" alt="챗봇"></div><div class="pane"><img src="../assets/mock/workflow.svg" alt="처리 흐름"></div></div></div>
+      <div class="screen-tabs"><button class="screen-tab active">답변 화면</button><button class="screen-tab">처리 흐름</button></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="section project" id="s-n8n" data-cat="ai"><div class="section-inner">
+  <div class="p-layout">
+    <div class="p-text">
+      <div class="p-meta">PERSONAL PROJECT · 2026.08</div>
+      <h3 class="p-title">아침 뉴스 브리핑 자동화</h3>
+      <div class="p-sub">크롤링 → AI 요약 → 시트 저장 → 슬랙 알림</div>
+      <div class="p-stack">BeautifulSoup · Selenium · n8n · Slack</div>
+      <p class="p-summary">관심 키워드 기사를 <b>매일 아침 자동으로</b> 모아 요약하고 팀 슬랙으로 보내 줍니다.</p>
+      <div class="stats"><div class="stat"><b>48건</b><span>하루 수집</span></div><div class="stat"><b>5개</b><span>노드</span></div><div class="stat"><b>30분</b><span>하루 절약</span></div></div>
+      <div class="actions"><a class="btn primary" href="#">워크플로 보기 →</a></div>
+    </div>
+    <div class="project-visual" data-gallery>
+      <div class="browser-frame"><div class="browser-top"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="url">n8n · 뉴스 브리핑</span></div>
+        <div class="project-screen"><div class="pane active"><img src="../assets/mock/workflow.svg" alt="워크플로"></div></div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== 03 콘텐츠 ===== -->
+<section class="cat-page" id="content" data-cat="content"><div class="section-inner">
+  <div class="cat-head">
+    <div class="cat-left"><div class="cat-no">03</div><div><div class="cat-kicker">CONTENTS</div><h2>콘텐츠 · 영상</h2><p>데이터를 보고 듣는 이야기로 바꿉니다</p></div></div>
+    <div class="cat-tags"><span>AI 영상</span><span>숏폼</span></div>
+  </div>
+</div></section>
+
+<section class="section project" id="s-video" data-cat="content"><div class="section-inner">
+  <div class="p-layout">
+    <div class="p-text">
+      <div class="p-meta">TEAM PROJECT · 3인 · 2026.11</div>
+      <h3 class="p-title">숫자로 보는 우리 동네</h3>
+      <div class="p-sub">AI 내레이션 데이터 숏폼 영상</div>
+      <div class="p-stack">AI 영상 도구 · AI 음성 · 자동 자막</div>
+      <p class="p-summary">공공자전거 기사를 <b>58초 숏폼</b>으로 다시 만들었습니다. 대본부터 내레이션·자막까지 AI와 함께 제작했습니다.</p>
+      <div class="stats"><div class="stat"><b>58초</b><span>영상 길이</span></div><div class="stat"><b>4장면</b><span>구성</span></div><div class="stat"><b>1일</b><span>제작 기간</span></div></div>
+      <div class="actions"><a class="btn primary" href="#">영상 보기 →</a></div>
+    </div>
+    <div class="project-visual" data-gallery>
+      <div class="browser-frame"><div class="browser-top"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="url">youtube.com/shorts</span></div>
+        <div class="project-screen"><div class="pane active"><img src="../assets/mock/video.svg" alt="영상"></div></div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== 연락 ===== -->
+<section class="section contact" id="contact" data-cat="contact"><div class="section-inner">
+  <div class="kicker">CONTACT</div>
+  <h2>데이터로 <span>좋은 질문</span>을 던지는<br>기자가 되겠습니다.</h2>
+  <p>함께 일할 기회를 기다립니다. 편하게 연락 주세요.</p>
+  <div class="actions"><a class="btn primary" href="mailto:hong@example.com">메일 보내기 →</a><a class="btn" href="https://github.com/">GitHub</a></div>
+</div></section>
+</main>
+
+<div class="lightbox" id="lb"><img alt=""></div>
+<script>
+document.querySelectorAll('[data-gallery]').forEach(g=>{
+  const panes=g.querySelectorAll('.pane'),tabs=g.querySelectorAll('.screen-tab');
+  tabs.forEach((t,i)=>t.addEventListener('click',()=>{panes.forEach((p,j)=>p.classList.toggle('active',i===j));tabs.forEach((b,j)=>b.classList.toggle('active',i===j))}));
+});
+const lb=document.getElementById('lb');
+document.querySelectorAll('.pane img,.page-btn img').forEach(img=>img.addEventListener('click',()=>{lb.querySelector('img').src=img.src;lb.classList.add('show')}));
+lb.addEventListener('click',()=>lb.classList.remove('show'));
+// 지금 보고 있는 카테고리 표시
+const navs=[...document.querySelectorAll('.side-nav a[data-cat]')];
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const c=e.target.dataset.cat;navs.forEach(a=>a.classList.toggle('active',a.dataset.cat===c))}}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('[data-cat]').forEach(s=>{if(s.tagName==='SECTION')io.observe(s)});
+</script>
+</body>
+</html>
